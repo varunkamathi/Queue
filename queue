@@ -1,0 +1,50 @@
+
+
+#include <stdio.h>
+#define V 5
+int queue[V];
+int front = -1,rear = -1;
+void enqeue(int x){
+    if(rear == V-1){
+        printf("queue is full");
+    }
+    else if(rear ==-1 && front ==-1){
+        rear=front=0;
+        queue[rear] = x;
+    }else{
+        rear++;
+        queue[rear]=x;
+    }
+}
+void deqeue(){
+    if(rear == -1 && front == -1){
+        printf("queue is empty");
+    }
+    else if(front==rear){
+        front=rear=0;
+    }
+    else{        printf("%d\n",queue[front]);
+
+        front++;
+        //printf("%d",queue[front]);
+
+    }
+}
+void display(){
+    if(rear == -1 && front == -1){
+        printf("queue is empty");
+    }else{
+        for(int i = front;i<=rear;i++){
+            printf("--%d",queue[i]);
+        }
+    }
+}
+int main()
+{
+    enqeue(2);
+    enqeue(6);
+    deqeue();
+    display();
+
+    return 0;
+}
