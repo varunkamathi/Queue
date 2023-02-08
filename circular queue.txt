@@ -1,0 +1,73 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+#define V 5
+int queue[V];
+int front = -1,rear = -1;
+void enqeue(){
+    int x;
+    //printf("enter the no. :");
+    //scanf("%d",&x);
+    if((rear +1)%V==front){
+        printf("queue is full\n");
+    }
+    else{ 
+        printf("enter the no. :");
+        scanf("%d",&x);
+    if(front == -1 && rear==-1){
+        rear=front=0;
+        queue[rear] = x;
+    }else{
+        
+        rear=(rear + 1)%V;
+        queue[rear]=x;
+    }}
+}
+void deqeue(){
+    if(rear == -1 && front == -1){
+        printf("queue is empty");
+    }
+    else if(front==rear){
+        front=rear=0;
+    }
+    else{        printf("%d\n",queue[front]);
+
+        front= (front + 1)%V;
+        //printf("%d",queue[front]);
+
+    }
+}
+void display(){
+    if(rear == -1 && front == -1){
+        printf("queue is empty");
+    }else{
+        for(int i = front;i!=rear;i = (i+1)%V){
+            printf("%d-",queue[i]);
+        }
+    }
+}
+int main()
+{
+    int ch;
+    do{
+        printf("\n1.enqeue\n2.deqeue\n3.display\n4.exit\n");
+        printf("enter the ch :");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1:
+                 enqeue();
+                  break;
+            case 2:
+                 deqeue();
+                 break;
+            case 3:
+                display();
+                break;
+            case 4:
+                 exit(0);
+                 
+        }
+    }while(ch!=4);
+
+    return 0;
+}
