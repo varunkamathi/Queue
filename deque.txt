@@ -1,0 +1,109 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define V 5
+int queue[V];
+int front = -1,rear = -1;
+void rearenqeue(){
+    int x;
+    //printf("enter the no. :");
+    //scanf("%d",&x);
+    if((rear +1)%V==front){
+        printf("queue is full\n");
+    }
+    else{ 
+        printf("enter the no. :");
+        scanf("%d",&x);
+    if(front == -1 && rear==-1){
+        rear=front=0;
+        queue[rear] = x;
+    }else{
+        
+        rear=(rear + 1)%V;
+        queue[rear]=x;
+    }}
+}
+void frontenqeue(){
+    int x;
+    //printf("enter the no. :");
+    //scanf("%d",&x);
+    if((rear +1)%V==front){
+        printf("queue is full\n");
+    }
+    else{ 
+        printf("enter the no. :");
+        scanf("%d",&x);
+    if(front == -1 && rear==-1){
+        rear=front=0;
+        queue[front] = x;
+    }else{
+        
+        front=(front - 1)%V;
+        queue[front]=x;
+    }}
+}
+void frontdeqeue(){
+    if(rear == -1 && front == -1){
+        printf("\nqueue is empty");
+    }
+    /*else if(front==rear){
+        front=rear=0;
+}*/
+    else{        printf("%d\n",queue[front]);
+
+        front= (front + 1)%V;
+        //printf("%d",queue[front]);
+
+    }
+}
+void reardeqeue(){
+    if(rear == -1 && front == -1){
+        printf("\nqueue is empty");
+    }
+    
+    else{        printf("%d\n",queue[rear]);
+
+        rear = (rear - 1)%V;
+        //printf("%d",queue[front]);
+
+    }
+}
+void display(){
+    if(rear == -1 && front == -1){
+        printf("\nqueue is empty\n");
+    }else{
+        for(int i = front;i<=rear;i = (i+1)%V){
+            printf("%d-",queue[i]);
+        }
+    }
+}
+int main()
+{
+    int ch;
+    do{
+        printf("\n1.front enqeue\n2.rear enqeue\n3.front deqeue\n4.rear deqeue\n5.display\n6.exit\n");
+        printf("enter the ch :");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1:
+                 frontenqeue();
+                  break;
+            case 2:
+                 rearenqeue();
+                  break;
+            case 3:
+                 frontdeqeue();
+                  break;      
+            case 4:
+                 reardeqeue();
+                 break;
+            case 5:
+                display();
+                break;
+            case 6:
+                 exit(0);
+                 
+        }
+    }while(ch!=6);
+
+    return 0;
+}
